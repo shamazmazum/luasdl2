@@ -463,7 +463,7 @@ static const struct {
 };
 
 int EXPORT
-luaopen_SDL(lua_State *L)
+luaopen_voxsdl(lua_State *L)
 {
 	int i;
 	SDL_version ver;
