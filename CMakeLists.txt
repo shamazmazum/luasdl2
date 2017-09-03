@@ -97,14 +97,16 @@ include_directories(
 	${LUA_INCLUDE_DIR}
 )
 
-#find_package(SysQueue)
-#if (NOT SYSQUEUE_FOUND
-#    OR NOT SYSQUEUE_SLIST_FOREACH_SAFE
-#    OR NOT SYSQUEUE_STAILQ_FOREACH_SAFE
-#    OR NOT SYSQUEUE_LIST_FOREACH_SAFE
-#    OR NOT SYSQUEUE_TAILQ_FOREACH_SAFE)
-#	include_directories(BEFORE ${Lua-SDL2_SOURCE_DIR}/extern/queue)
-#endif ()
+set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+find_package(SysQueue)
+if (NOT SYSQUEUE_FOUND
+    OR NOT SYSQUEUE_SLIST_FOREACH_SAFE
+    OR NOT SYSQUEUE_STAILQ_FOREACH_SAFE
+    OR NOT SYSQUEUE_LIST_FOREACH_SAFE
+    OR NOT SYSQUEUE_TAILQ_FOREACH_SAFE)
+	include_directories(BEFORE ${CMAKE_CURRENT_SOURCE_DIR}/extern/queue)
+endif ()
 
 # Common code for modules
 add_subdirectory(common)
